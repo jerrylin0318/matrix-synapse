@@ -9,4 +9,6 @@ RUN python -m synapse.app.homeserver --config-path /data/homeserver.yaml --gener
 
 EXPOSE 8008
 
-CMD ["python", "-m", "synapse.app.homeserver", "--config-path", "/data/homeserver.yaml"]
+# Override entrypoint and use direct command
+ENTRYPOINT ["python", "-m", "synapse.app.homeserver"]
+CMD ["--config-path", "/data/homeserver.yaml"]
