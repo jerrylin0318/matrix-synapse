@@ -1,9 +1,9 @@
 # Matrix Synapse Configuration
 # Server name will be updated after Render deployment
 
-server_name: "PLACEHOLDER.onrender.com"
+server_name: "matrix-synapse-78t1.onrender.com"
 pid_file: /data/homeserver.pid
-public_baseurl: "https://PLACEHOLDER.onrender.com/"
+public_baseurl: "https://matrix-synapse-78t1.onrender.com/"
 
 listeners:
   - port: 8008
