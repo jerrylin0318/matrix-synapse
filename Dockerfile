@@ -1,11 +1,12 @@
 FROM matrixdotorg/synapse:latest
 
-# Copy config and startup script
+# Copy config
 COPY homeserver.yaml /data/homeserver.yaml
 COPY log.config /data/log.config
-COPY start.sh /start.sh
-RUN chmod +x /start.sh
+
+# Pre-generate signing key
+RUN python -m synapse.app.homeserver --config-path /data/homeserver.yaml --generate-keys || true
 
 EXPOSE 8008
 
-CMD ["/start.sh"]
+CMD ["python", "-m", "synapse.app.homeserver", "--config-path", "/data/homeserver.yaml"]
