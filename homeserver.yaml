@@ -1,0 +1,57 @@
+# Matrix Synapse Configuration
+# Server name will be updated after Render deployment
+
+server_name: "PLACEHOLDER.onrender.com"
+pid_file: /data/homeserver.pid
+public_baseurl: "https://PLACEHOLDER.onrender.com/"
+
+listeners:
+  - port: 8008
+    tls: false
+    type: http
+    x_forwarded: true
+    resources:
+      - names: [client, federation]
+        compress: false
+
+# PostgreSQL Database (Neon)
+database:
+  name: psycopg2
+  args:
+    user: neondb_owner
+    password: "npg_Bp9cA7vVOFkE"
+    database: synapse
+    host: ep-muddy-mouse-ahub81p2.c-3.us-east-1.aws.neon.tech
+    port: 5432
+    sslmode: require
+    cp_min: 1
+    cp_max: 5
+
+# Logging
+log_config: "/data/log.config"
+
+# Media storage (local for now)
+media_store_path: /data/media_store
+max_upload_size: 50M
+
+# Registration
+enable_registration: true
+enable_registration_without_verification: true
+
+# Security
+registration_shared_secret: "a1a92d233a42b456b65fa546c03e11092a5e0da4e10285b4e8af05001878e36c"
+macaroon_secret_key: "76006744fbda97e631c7e95b85c439e9477214024564962f2a88686afba4676b"
+form_secret: "042960b85876437a2b6d868cb2c62795551f5f8fd55fc25aa272acbe6121ab82"
+
+# Signing key
+signing_key_path: "/data/signing.key"
+
+# Disable reporting
+report_stats: false
+
+# Trusted servers for key verification
+trusted_key_servers:
+  - server_name: "matrix.org"
+
+# Suppress key server warning
+suppress_key_server_warning: true

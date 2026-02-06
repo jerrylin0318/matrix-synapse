@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: matrix-synapse
+    runtime: docker
+    plan: free
+    healthCheckPath: /_matrix/client/versions
+    disk:
+      name: synapse-data
+      mountPath: /data
+      sizeGB: 1
