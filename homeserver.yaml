@@ -17,6 +17,7 @@ listeners:
 # PostgreSQL Database (Neon)
 database:
   name: psycopg2
+  allow_unsafe_locale: true
   args:
     user: neondb_owner
     password: "npg_Bp9cA7vVOFkE"
